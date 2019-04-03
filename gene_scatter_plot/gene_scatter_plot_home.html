@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>gene scatter plot home</title>
+<link rel="stylesheet" href="css/gene_scatter_plot_main.css">
+<link rel="stylesheet" href="css/nv.d3.css">
+<script src="js/jQuery.js"></script>
+<script src="js/d3.min.js"></script>
+<script src="js/nv.d3.js"></script>
+<script src="js/error_code.js"></script>
+<script src="js/get_json_files.js"></script>
+<script src="js/draw.js"></script>
+<style>
+        text {
+            font: 12px sans-serif;
+        }
+        svg {
+            display: block;
+        }
+        html, body, #test1, svg {
+            margin: 0px;
+            padding: 0px;
+            height: 100%;
+            width: 100%;
+        }
+</style>	
+</head>
+<body class="with-3d-shadow with-transitions">
+<div id="main">
+	
+	<h1>Gene Expression</h1>
+	<h2>Scatter Plot</h2>
+	<br>
+	
+<div class="wrapper">
+  <input type="file" id="gene1"/>Upload gene1 file<br>
+  <input type="file" id="gene2"/>Upload gene2 file<br>
+  <input type="file" id="info"/>Upload information file<br><br>
+</div>	
+<div>
+<p align="center">gene1 file</p>
+<div class="preview">
+	<p id="gene1Preview"></p>
+</div>
+<p align="center">gene2 file</p>
+<div class="preview">
+	<p id="gene2Preview"></p>		
+</div>
+<p align="center">information file</p>
+<div class="preview">
+	<p id="infoPreview"></p>
+</div>
+<div>
+<script src="js/preview.js"></script>
+<p align="center"><button type="submit" onClick="getJsonFiles(); draw()" class="button buttonShadow">Submit</button></p>
+</div>
+</div>	
+
+</div>
+<div id="test1" class="chartWrap">
+    <svg></svg>
+</div>
+<script>$("#test1").hide();</script>
+<div id="end" class="wrapper">
+<p id="detail" align></p>
+<p id="loss" align="center" style="color: #FA4346"></p>
+<p id="coefficient" align="center" style="color: #26D08E;"></p>
+<p align="center"><button onClick="window.location.reload();" class="button buttonShadow">Home</button></p>
+</div>
+<p align="center"><a href="support.html" target="_blank"><button class="button buttonShadow">Support</button></a></p>
+<script>$("#end").hide();</script>
+<div align="center" onDblClick="displayFace()">
+	<small>Copyright &copy; 2019 Monchi</small>	
+	<hr>
+</div>
+</body>
+</html>
+

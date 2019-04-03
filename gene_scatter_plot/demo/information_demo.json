@@ -1,0 +1,42 @@
+{
+  "SRR1738129": {
+        "tissue": "root", 
+        "detail": "Title: Illumina HiSeq 2500 sequencing; GSM1576113: pSHR_0h_rep2; Arabidopsis thaliana; RNA-Seq. Alias: GSM1576113_r1.  More info: Translatome analyses of opposing tissue-specific brassinosteroid signals orchestrating root meristem differentiation The mechanisms ensuring balanced growth remain a critical question in developmental biology. In plants, this balance relies on spatiotemporal integration of hormonal signaling pathways, but the understanding of the precise contribution of each hormone is just beginning to take form. Brassinosteroid (BR) hormone, is shown here to have opposing effects  ..."
+    }, 
+    "SRR1738128": {
+        "tissue": "root", 
+        "detail": "Title: Illumina HiSeq 2500 sequencing; GSM1576112: pSHR_0h_rep1; Arabidopsis thaliana; RNA-Seq. Alias: GSM1576112_r1.  More info: Translatome analyses of opposing tissue-specific brassinosteroid signals orchestrating root meristem differentiation The mechanisms ensuring balanced growth remain a critical question in developmental biology. In plants, this balance relies on spatiotemporal integration of hormonal signaling pathways, but the understanding of the precise contribution of each hormone is just beginning to take form. Brassinosteroid (BR) hormone, is shown here to have opposing effects  ..."
+    }, 
+    "SRR1738127": {
+        "tissue": "root", 
+        "detail": "Title: Illumina HiSeq 2500 sequencing; GSM1576111: pSCR_8h_rep2; Arabidopsis thaliana; RNA-Seq. Alias: GSM1576111_r1.  More info: Translatome analyses of opposing tissue-specific brassinosteroid signals orchestrating root meristem differentiation The mechanisms ensuring balanced growth remain a critical question in developmental biology. In plants, this balance relies on spatiotemporal integration of hormonal signaling pathways, but the understanding of the precise contribution of each hormone is just beginning to take form. Brassinosteroid (BR) hormone, is shown here to have opposing effects  ..."
+    }, 
+    "SRR1738126": {
+        "tissue": "root", 
+        "detail": "Title: Illumina HiSeq 2500 sequencing; GSM1576110: pSCR_8h_rep1; Arabidopsis thaliana; RNA-Seq. Alias: GSM1576110_r1.  More info: Translatome analyses of opposing tissue-specific brassinosteroid signals orchestrating root meristem differentiation The mechanisms ensuring balanced growth remain a critical question in developmental biology. In plants, this balance relies on spatiotemporal integration of hormonal signaling pathways, but the understanding of the precise contribution of each hormone is just beginning to take form. Brassinosteroid (BR) hormone, is shown here to have opposing effects  ..."
+    }, 
+    "SRR1738125": {
+        "tissue": "root", 
+        "detail": "Title: Illumina HiSeq 2500 sequencing; GSM1576109: pSCR_3h_rep2; Arabidopsis thaliana; RNA-Seq. Alias: GSM1576109_r1.  More info: Translatome analyses of opposing tissue-specific brassinosteroid signals orchestrating root meristem differentiation The mechanisms ensuring balanced growth remain a critical question in developmental biology. In plants, this balance relies on spatiotemporal integration of hormonal signaling pathways, but the understanding of the precise contribution of each hormone is just beginning to take form. Brassinosteroid (BR) hormone, is shown here to have opposing effects  ..."
+    }, 
+    "SRR1738124": {
+        "tissue": "root", 
+        "detail": "Title: Illumina HiSeq 2500 sequencing; GSM1576108: pSCR_3h_rep1; Arabidopsis thaliana; RNA-Seq. Alias: GSM1576108_r1.  More info: Translatome analyses of opposing tissue-specific brassinosteroid signals orchestrating root meristem differentiation The mechanisms ensuring balanced growth remain a critical question in developmental biology. In plants, this balance relies on spatiotemporal integration of hormonal signaling pathways, but the understanding of the precise contribution of each hormone is just beginning to take form. Brassinosteroid (BR) hormone, is shown here to have opposing effects  ..."
+    }, 
+    "SRR1738123": {
+        "tissue": "root", 
+        "detail": "Title: Illumina HiSeq 2500 sequencing; GSM1576107: pSCR_0h_rep2; Arabidopsis thaliana; RNA-Seq. Alias: GSM1576107_r1.  More info: Translatome analyses of opposing tissue-specific brassinosteroid signals orchestrating root meristem differentiation The mechanisms ensuring balanced growth remain a critical question in developmental biology. In plants, this balance relies on spatiotemporal integration of hormonal signaling pathways, but the understanding of the precise contribution of each hormone is just beginning to take form. Brassinosteroid (BR) hormone, is shown here to have opposing effects  ..."
+    }, 
+    "SRR1738122": {
+        "tissue": "root", 
+        "detail": "Title: Illumina HiSeq 2500 sequencing; GSM1576106: pSCR_0h_rep1; Arabidopsis thaliana; RNA-Seq. Alias: GSM1576106_r1.  More info: Translatome analyses of opposing tissue-specific brassinosteroid signals orchestrating root meristem differentiation The mechanisms ensuring balanced growth remain a critical question in developmental biology. In plants, this balance relies on spatiotemporal integration of hormonal signaling pathways, but the understanding of the precise contribution of each hormone is just beginning to take form. Brassinosteroid (BR) hormone, is shown here to have opposing effects  ..."
+    }, 
+    "SRR1738121": {
+        "tissue": "root", 
+        "detail": "Title: Illumina HiSeq 2500 sequencing; GSM1576105: pGL2_8h_rep2; Arabidopsis thaliana; RNA-Seq. Alias: GSM1576105_r1.  More info: Translatome analyses of opposing tissue-specific brassinosteroid signals orchestrating root meristem differentiation The mechanisms ensuring balanced growth remain a critical question in developmental biology. In plants, this balance relies on spatiotemporal integration of hormonal signaling pathways, but the understanding of the precise contribution of each hormone is just beginning to take form. Brassinosteroid (BR) hormone, is shown here to have opposing effects  ..."
+    }, 
+    "SRR1738120": {
+        "tissue": "root", 
+        "detail": "Title: Illumina HiSeq 2500 sequencing; GSM1576104: pGL2_8h_rep1; Arabidopsis thaliana; RNA-Seq. Alias: GSM1576104_r1.  More info: Translatome analyses of opposing tissue-specific brassinosteroid signals orchestrating root meristem differentiation The mechanisms ensuring balanced growth remain a critical question in developmental biology. In plants, this balance relies on spatiotemporal integration of hormonal signaling pathways, but the understanding of the precise contribution of each hormone is just beginning to take form. Brassinosteroid (BR) hormone, is shown here to have opposing effects  ..."
+    }
+}
