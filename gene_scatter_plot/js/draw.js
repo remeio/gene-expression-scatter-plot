@@ -75,7 +75,6 @@ function draw() {
                 finalDetail = finalDetail + "<br>-";
               }
             }
-            console.log(finalDetail);
             return finalDetail;
           }
         }
@@ -83,12 +82,5 @@ function draw() {
       return "Detail: not found";
     }
 }
-//	var keys = [1,2,3];
-//	var datas = [[1,2],
-//				[2,7,8,9],
-//				[2,5,11,9,12,8]];
-//	var details = [[111],[211,212],[311,312,313]];
-	
-
 
    
