@@ -3,7 +3,6 @@ var datas = new Array();
 datas[0] = new Array();
 var details = new Array();
 details[0] = new Array();
-var correlationCoefficient = 0;
 function getJsonFiles() {
 	var jsonstr1 = document.getElementById("gene1Preview").innerHTML;
 	var jsonstr2 = document.getElementById("gene2Preview").innerHTML;
@@ -16,11 +15,12 @@ function getJsonFiles() {
 			var gene1 = eval('(' + jsonstr1 + ')');
 			var gene2 = eval('(' + jsonstr2 + ')');
 			if (check3) {
-        var info = eval('(' + jsonstr3 + ')');
+				var info = eval('(' + jsonstr3 + ')');
 			}
-      else {
-        var info = null;
-      }
+			else {
+				errorCode(106);
+				var info = null;
+			}  
 			var doN = 0;
 			var infoN = 0;
 			var g1N = 0;
@@ -36,7 +36,7 @@ function getJsonFiles() {
 				var str1 = "";
 				var str2 = "";
         if (info == null || info[tempStr] == undefined) {
-           str1 = "others";
+           str1 = "undefined";
            str2 = "";
         }
         else {
@@ -58,14 +58,14 @@ function getJsonFiles() {
 				g1N++;
 			}
 			for(var attr in info) {
-        infoN++;
+				infoN++;
 			}
 			for(var attr in gene2) {
-        g2N++;
+				g2N++;
 			}
 			document.getElementById('loss').innerHTML = "Gene1 utilization: " + Math.round(doN / g1N * 100.0)  + "%  " +  doN + "/" + g1N + "<br>Gene2 utilization: " + Math.round(doN / g2N * 100.0) + "%  " +  doN + "/" + g2N +"<br>Information utilization: " + Math.round(doN / infoN * 100.0) + "%  " +  doN + "/" + infoN;
 			if (!check3) {
-        document.getElementById('loss').innerHTML = "Gene1 utilization: " + Math.round(doN / g1N * 100.0)  + "%  " +  doN + "/" + g1N + "<br>Gene2 utilization: " + Math.round(doN / g2N * 100.0) + "%  " +  doN + "/" + g2N;
+				document.getElementById('loss').innerHTML = "Gene1 utilization: " + Math.round(doN / g1N * 100.0)  + "%  " +  doN + "/" + g1N + "<br>Gene2 utilization: " + Math.round(doN / g2N * 100.0) + "%  " +  doN + "/" + g2N;
 			}
 			document.getElementById('coefficient').innerHTML = getR();
 		}
@@ -82,7 +82,15 @@ function getJsonFiles() {
 		}
 	}
 	else {
-		
+		if (jsonstr1 == "") {
+			errorCode(101);
+		}
+		if (jsonstr2 == "") {
+			errorCode(102);
+		}
+		if (jsonstr3 == "") {
+			errorCode(103);
+		}
 	}			
 }
 
@@ -97,7 +105,6 @@ function isJSON(str) {
             }
 
         } catch(e) {
-            console.log('error：'+str+'!!!'+e);
             return false;
         }
     }
@@ -114,8 +121,19 @@ function beFound(key, keys) {
 }
 function getR () {
       var str = "";
+	  var correlationCoefficient1 = 0;
+      var sumOfSquareOfX1 = 0;
+      var sumOfSquareOfY1 = 0;
+      var sumOfXTimesY1 = 0;
+      var averageX1 = 0;
+      var averageY1 = 0;
+      var squareOfAverageX1 = 0;
+      var squareOfAverageY1 = 0;
+      var averageXTimesAverageY1 = 0;
+	  var allN = 0;
       for (var i = 0; i < keys.length; i++) {
-        var sumOfSquareOfX = 0;//get R
+		var correlationCoefficient = 0;
+        var sumOfSquareOfX = 0;
         var sumOfSquareOfY = 0;
         var sumOfXTimesY = 0;
         var averageX = 0;
@@ -124,24 +142,36 @@ function getR () {
         var squareOfAverageY = 0;
         var averageXTimesAverageY = 0;
         for (var j = 0; j < datas[i].length; j = j + 2) {
-          var g1 = datas[i][j];
-          var g2 = datas[i][j + 1];
-          sumOfSquareOfX += g1 * g1;	//get R;
-					sumOfSquareOfY += g2 * g2;
-					sumOfXTimesY += g1 * g2;
-					averageX += g1;
-					averageY += g2;
+			var x = datas[i][j];
+			var y = datas[i][j + 1];
+			sumOfSquareOfX += x * x;
+			sumOfSquareOfY += y * y;
+			sumOfXTimesY += x * y;
+			averageX += x;
+			averageY += y;
+			sumOfSquareOfX1 += x * x;
+			sumOfSquareOfY1 += y * y;
+			sumOfXTimesY1 += x * y;
+			averageX1 += x;
+			averageY1 += y;
+			allN++;
         }
-        var doN = datas[i].length;
+        var doN = datas[i].length / 2;
         averageX /= doN;
         averageY /= doN;
         squareOfAverageX = averageX * averageX;
         squareOfAverageY = averageY * averageY;
         averageXTimesAverageY = averageX * averageY;
         correlationCoefficient = Math.abs((sumOfXTimesY - doN * averageXTimesAverageY) / (Math.sqrt((sumOfSquareOfX - doN * squareOfAverageX) * (sumOfSquareOfY - doN * squareOfAverageY))));
-        str = str + "<tr><td>" + keys[i] + "</td><td>" + correlationCoefficient.toFixed(5) + "</td></tr>";
+        str = str + "<tr><td>" + keys[i] + "</td><td>" + correlationCoefficient.toFixed(5) + "</td><td>" + doN + "</td></tr>";
       }
-      return str;
+	  averageX1 /= allN;
+      averageY1 /= allN;
+      squareOfAverageX1 = averageX1 * averageX1;
+      squareOfAverageY1 = averageY1 * averageY1;
+      averageXTimesAverageY1 = averageX1 * averageY1;
+      correlationCoefficient1 = Math.abs((sumOfXTimesY1 - allN * averageXTimesAverageY1) / (Math.sqrt((sumOfSquareOfX1 - allN * squareOfAverageX1) * (sumOfSquareOfY1 - allN * squareOfAverageY1))));
+	  return "<tr><td>Tissue</td><td>R</td><td>N</td></tr>" + str + "<tr><td>all</td><td>" + correlationCoefficient1.toFixed(5) + "</td><td>" + allN + "</td></tr>";
     }
 function getKeys() {
 	return this.keys;

@@ -1,7 +1,6 @@
 @charset "utf-8";
 /* CSS Document */
-/*body { background-color: #B0E7FB;
-	   background-image: linear-gradient(to left, #B0E7FB, #FFFFFF); }*/
+
 h1 { font-size: 1.7em;
 	 text-align: center;
      color: #54A2F2 }
@@ -22,7 +21,6 @@ h3 {
 	   margin-right: auto;
 	   border:2px solid #06989D;
 	   overflow: auto; 
- 	   background-image: linear-gradient(to left, #B0E7FB, #FFFFFF);
 	   color: #F70A0E }
 .button {
 	background-color: #8FE0F5;
@@ -48,6 +46,5 @@ h3 {
 	   margin-right: auto;
 	   border:2px solid #06989D;
 	   overflow: auto; 
- 	   background-image: linear-gradient(to left, #B0E7FB, #FFFFFF);
 	   color: #1811EE }
 }

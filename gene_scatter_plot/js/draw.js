@@ -59,6 +59,10 @@ function draw() {
                     y: datas[i][j + 1],
                 });
             }
+			data[i].values.push({
+                    x: 0,
+                    y: 0,
+            });
         }
         return data;
     }
@@ -79,7 +83,7 @@ function draw() {
           }
         }
       }
-      return "Detail: not found";
+      return "(0,0)";
     }
 }
 
