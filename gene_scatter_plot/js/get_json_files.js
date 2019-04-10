@@ -3,6 +3,7 @@ var datas = new Array();
 datas[0] = new Array();
 var details = new Array();
 details[0] = new Array();
+var arraySort = new Array();
 function getJsonFiles() {
 	var jsonstr1 = document.getElementById("gene1Preview").innerHTML;
 	var jsonstr2 = document.getElementById("gene2Preview").innerHTML;
@@ -36,7 +37,7 @@ function getJsonFiles() {
 				var str1 = "";
 				var str2 = "";
         if (info == null || info[tempStr] == undefined) {
-           str1 = "undefined";
+           str1 = "unknown";
            str2 = "";
         }
         else {
@@ -163,7 +164,8 @@ function getR () {
         squareOfAverageY = averageY * averageY;
         averageXTimesAverageY = averageX * averageY;
         correlationCoefficient = Math.abs((sumOfXTimesY - doN * averageXTimesAverageY) / (Math.sqrt((sumOfSquareOfX - doN * squareOfAverageX) * (sumOfSquareOfY - doN * squareOfAverageY))));
-        str = str + "<tr><td>" + keys[i] + "</td><td>" + correlationCoefficient.toFixed(5) + "</td><td>" + doN + "</td></tr>";
+       
+	arraySort[i] = new Array(keys[i], correlationCoefficient.toFixed(5), doN);
       }
 	  averageX1 /= allN;
       averageY1 /= allN;
@@ -171,6 +173,7 @@ function getR () {
       squareOfAverageY1 = averageY1 * averageY1;
       averageXTimesAverageY1 = averageX1 * averageY1;
       correlationCoefficient1 = Math.abs((sumOfXTimesY1 - allN * averageXTimesAverageY1) / (Math.sqrt((sumOfSquareOfX1 - allN * squareOfAverageX1) * (sumOfSquareOfY1 - allN * squareOfAverageY1))));
+	  str = sortR();
 	  return "<tr><td>Tissue</td><td>R</td><td>N</td></tr>" + str + "<tr><td>all</td><td>" + correlationCoefficient1.toFixed(5) + "</td><td>" + allN + "</td></tr>";
     }
 function getKeys() {
@@ -187,4 +190,26 @@ function getCorrelationCoefficient(){
 }
 function displayFace() {
 	alert(" : ) No cross, no crown.");
+}
+function sortR() {
+	var str = "";
+	for (var i = 0; i < arraySort.length - 1; i++) {
+		for (var j = i + 1; j < arraySort.length; j++) {
+			if (arraySort[j][1] > arraySort[i][1]) {
+				var temp1 = arraySort[i][0];
+				var temp2 = arraySort[i][1];
+				var temp3 = arraySort[i][2];
+				arraySort[i][0] = arraySort[j][0];
+				arraySort[i][1] = arraySort[j][1];
+				arraySort[i][2] = arraySort[j][2];
+				arraySort[j][0] = temp1;
+				arraySort[j][1] = temp2;
+				arraySort[j][2] = temp3;	
+			}
+		}
+	}
+	for (var i = 0; i < arraySort.length; i++) {
+		str = str + "<tr><td>" + arraySort[i][0] + "</td><td>" + arraySort[i][1] + "</td><td>" + arraySort[i][2] + "</td></tr>";	
+	}
+	return str;
 }
