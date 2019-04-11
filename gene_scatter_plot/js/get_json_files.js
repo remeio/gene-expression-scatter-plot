@@ -164,8 +164,7 @@ function getR () {
         squareOfAverageY = averageY * averageY;
         averageXTimesAverageY = averageX * averageY;
         correlationCoefficient = Math.abs((sumOfXTimesY - doN * averageXTimesAverageY) / (Math.sqrt((sumOfSquareOfX - doN * squareOfAverageX) * (sumOfSquareOfY - doN * squareOfAverageY))));
-       
-	arraySort[i] = new Array(keys[i], correlationCoefficient.toFixed(5), doN);
+		arraySort[i] = new Array(keys[i], correlationCoefficient.toFixed(5), doN);
       }
 	  averageX1 /= allN;
       averageY1 /= allN;
