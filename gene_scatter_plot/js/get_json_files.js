@@ -4,6 +4,10 @@ datas[0] = new Array();
 var details = new Array();
 details[0] = new Array();
 var arraySort = new Array();
+var strAll = "";
+var doTemp1 = 0;
+var doTemp2 = 0;
+var doTemp3 = 0;
 function getJsonFiles() {
 	var jsonstr1 = document.getElementById("gene1Preview").innerHTML;
 	var jsonstr2 = document.getElementById("gene2Preview").innerHTML;
@@ -68,7 +72,8 @@ function getJsonFiles() {
 			if (!check3) {
 				document.getElementById('loss').innerHTML = "Gene1 utilization: " + Math.round(doN / g1N * 100.0)  + "%  " +  doN + "/" + g1N + "<br>Gene2 utilization: " + Math.round(doN / g2N * 100.0) + "%  " +  doN + "/" + g2N;
 			}
-			document.getElementById('coefficient').innerHTML = getR();
+			strAll = getR ();
+			sortBySomething(1);
 		}
 		else {
 			if (!check1) {
@@ -172,8 +177,7 @@ function getR () {
       squareOfAverageY1 = averageY1 * averageY1;
       averageXTimesAverageY1 = averageX1 * averageY1;
       correlationCoefficient1 = Math.abs((sumOfXTimesY1 - allN * averageXTimesAverageY1) / (Math.sqrt((sumOfSquareOfX1 - allN * squareOfAverageX1) * (sumOfSquareOfY1 - allN * squareOfAverageY1))));
-	  str = sortR();
-	  return "<tr><td>Tissue</td><td>R</td><td>N</td></tr>" + str + "<tr><td>all</td><td>" + correlationCoefficient1.toFixed(5) + "</td><td>" + allN + "</td></tr>";
+	  return "<tr><td>all</td><td>" + correlationCoefficient1.toFixed(5) + "</td><td>" + allN + "</td></tr>";
     }
 function getKeys() {
 	return this.keys;
@@ -190,25 +194,66 @@ function getCorrelationCoefficient(){
 function displayFace() {
 	alert(" : ) No cross, no crown.");
 }
-function sortR() {
+function sortBySomething(temp) {
 	var str = "";
 	for (var i = 0; i < arraySort.length - 1; i++) {
-		for (var j = i + 1; j < arraySort.length; j++) {
-			if (arraySort[j][1] > arraySort[i][1]) {
-				var temp1 = arraySort[i][0];
-				var temp2 = arraySort[i][1];
-				var temp3 = arraySort[i][2];
-				arraySort[i][0] = arraySort[j][0];
-				arraySort[i][1] = arraySort[j][1];
-				arraySort[i][2] = arraySort[j][2];
-				arraySort[j][0] = temp1;
-				arraySort[j][1] = temp2;
-				arraySort[j][2] = temp3;	
+				for (var j = i + 1; j < arraySort.length; j++) {
+					if (arraySort[j][temp - 1] > arraySort[i][temp - 1]) {
+						var temp1 = arraySort[i][0];
+						var temp2 = arraySort[i][1];
+						var temp3 = arraySort[i][2];
+						arraySort[i][0] = arraySort[j][0];
+						arraySort[i][1] = arraySort[j][1];
+						arraySort[i][2] = arraySort[j][2];
+						arraySort[j][0] = temp1;
+						arraySort[j][1] = temp2;
+						arraySort[j][2] = temp3;	
+					}
+				}
+	}
+	switch (temp) {
+		case 1:
+		if (doTemp1 % 2 == 0) {
+			for (var i = 0; i < arraySort.length; i++) {
+				str = str + "<tr><td>" + arraySort[i][0] + "</td><td>" + arraySort[i][1] + "</td><td>" + arraySort[i][2] + "</td></tr>";	
 			}
 		}
+		else {
+			for (var i = arraySort.length - 1; i >= 0; i--) {
+				str = str + "<tr><td>" + arraySort[i][0] + "</td><td>" + arraySort[i][1] + "</td><td>" + arraySort[i][2] + "</td></tr>";	
+			}
+		}
+		doTemp1++;			
+		break;
+		
+		case 2: 
+		if (doTemp2 % 2 == 0) {
+			for (var i = 0; i < arraySort.length; i++) {
+				str = str + "<tr><td>" + arraySort[i][0] + "</td><td>" + arraySort[i][1] + "</td><td>" + arraySort[i][2] + "</td></tr>";	
+			}
+		}
+		else {
+			for (var i = arraySort.length - 1; i >= 0; i--) {
+				str = str + "<tr><td>" + arraySort[i][0] + "</td><td>" + arraySort[i][1] + "</td><td>" + arraySort[i][2] + "</td></tr>";	
+			}
+		}
+		doTemp2++;	
+		break;
+			
+		case 3:
+		if (doTemp3 % 2 == 0) {
+			for (var i = 0; i < arraySort.length; i++) {
+				str = str + "<tr><td>" + arraySort[i][0] + "</td><td>" + arraySort[i][1] + "</td><td>" + arraySort[i][2] + "</td></tr>";	
+			}
+		}
+		else {
+			for (var i = arraySort.length - 1; i >= 0; i--) {
+				str = str + "<tr><td>" + arraySort[i][0] + "</td><td>" + arraySort[i][1] + "</td><td>" + arraySort[i][2] + "</td></tr>";	
+			}
+		}
+		doTemp3++;	
+		break;
 	}
-	for (var i = 0; i < arraySort.length; i++) {
-		str = str + "<tr><td>" + arraySort[i][0] + "</td><td>" + arraySort[i][1] + "</td><td>" + arraySort[i][2] + "</td></tr>";	
-	}
-	return str;
+	str = "<tr><td><p onclick='sortBySomething(1);'>Tissue</p></td><td><p onclick='sortBySomething(2);'>Coefficient</p></td><td><p onclick='sortBySomething(3);'>Number</p></td></tr>" + str + strAll;
+	document.getElementById('coefficient').innerHTML = str;
 }
