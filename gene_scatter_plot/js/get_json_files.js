@@ -73,7 +73,7 @@ function getJsonFiles() {
 				document.getElementById('loss').innerHTML = "Gene1 utilization: " + Math.round(doN / g1N * 100.0)  + "%  " +  doN + "/" + g1N + "<br>Gene2 utilization: " + Math.round(doN / g2N * 100.0) + "%  " +  doN + "/" + g2N;
 			}
 			strAll = getR ();
-			sortBySomething(1);
+			sortBySomething(2);
 		}
 		else {
 			if (!check1) {
