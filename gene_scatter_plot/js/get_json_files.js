@@ -31,34 +31,37 @@ function getJsonFiles() {
 			var g1N = 0;
 			var g2N = 0;
 			for (var attr in gene1) {
-        var tempStr = "";
-        for (var i = 2; i < attr.length - 2; i++) {
-          tempStr = tempStr + attr.charAt(i);
-        } 
+				var tempStr = "";
+				for (var i = 2; i < attr.length - 2; i++) {
+				  tempStr = tempStr + attr.charAt(i);
+				} 
 				var g1 = gene1[attr];
 				var g2 = gene2[attr];
 				if (g1 != undefined && g2!=undefined) {
-				var str1 = "";
-				var str2 = "";
-        if (info == null || info[tempStr] == undefined) {
-           str1 = "unknown";
-           str2 = "";
-        }
-        else {
-           str1 = info[tempStr].tissue;
-           str2 = info[tempStr].detail;
-        }
-        var judgeTemp = beFound(str1, keys);
-          if (judgeTemp == -1) {
-             keys.push(str1);
-						judgeTemp = beFound(str1, keys);
-						datas[judgeTemp] = new Array();
-						details[judgeTemp] = new Array();
-          }
-          datas[judgeTemp].push(g1);
-          datas[judgeTemp].push(g2);
-          details[judgeTemp].push(str2);
-          doN++;
+					var str1 = "";
+					var str2 = "";
+					if (info == null || info[tempStr] == undefined) {
+					   str1 = "unknown";
+					   str2 = "";
+					}
+					else {
+						if (info[tempStr].tissue == undefined) {
+							str1 = "undefined";
+						}
+					   str1 = info[tempStr].tissue;
+					   str2 = info[tempStr].detail;
+					}
+					var judgeTemp = beFound(str1, keys);
+					if (judgeTemp == -1) {
+							keys.push(str1);
+							judgeTemp = beFound(str1, keys);
+							datas[judgeTemp] = new Array();
+							details[judgeTemp] = new Array();
+					}
+					datas[judgeTemp].push(g1);
+					datas[judgeTemp].push(g2);
+					details[judgeTemp].push(str2);
+					doN++;
 				}
 				g1N++;
 			}
