@@ -8,6 +8,10 @@ var strAll = "";
 var doTemp1 = 0;
 var doTemp2 = 0;
 var doTemp3 = 0;
+var attrGene2Fun = "";
+var attrInformationFun = "";
+var attrTissue = "";
+var attrDetail = "";
 function getJsonFiles() {
 	var jsonstr1 = document.getElementById("gene1Preview").innerHTML;
 	var jsonstr2 = document.getElementById("gene2Preview").innerHTML;
@@ -31,25 +35,31 @@ function getJsonFiles() {
 			var g1N = 0;
 			var g2N = 0;
 			for (var attr in gene1) {
-				var tempStr = "";
-				for (var i = 2; i < attr.length - 2; i++) {
-				  tempStr = tempStr + attr.charAt(i);
-				} 
+				var tempStrG2 = "";
+				var tempStrInfo = "";
+				var tempStrTissue = "";
+				var tempStrDetail = "";
+				eval(attrGene2Fun);
+				eval(attrInformationFun);
+				eval(attrTissueAndAttrDetailFun);
+				console.log(attr + " " + tempStrG2 + " " + tempStrInfo + " " + tempStrTissue + " " + tempStrDetail);
 				var g1 = gene1[attr];
 				var g2 = gene2[attr];
 				if (g1 != undefined && g2!=undefined) {
 					var str1 = "";
 					var str2 = "";
-					if (info == null || info[tempStr] == undefined) {
+					if (info == null || info[tempStrInfo] == undefined) {
 					   str1 = "unknown";
 					   str2 = "";
 					}
 					else {
-						if (info[tempStr].tissue == undefined) {
+						if (info[tempStrInfo][tempStrTissue] == undefined) {
 							str1 = "undefined";
 						}
-					   str1 = info[tempStr].tissue;
-					   str2 = info[tempStr].detail;
+						else {
+							str1 = info[tempStrInfo][tempStrTissue];
+						}
+						str2 = info[tempStrInfo][tempStrDetail];
 					}
 					var judgeTemp = beFound(str1, keys);
 					if (judgeTemp == -1) {

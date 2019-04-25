@@ -10,6 +10,7 @@
 <script src="js/nv.d3.js"></script>
 <script src="js/error_code.js"></script>
 <script src="js/get_json_files.js"></script>
+<script src="js/settings.js"></script>
 <script src="js/draw.js"></script>
 <style>
         text {
@@ -26,7 +27,7 @@
         }
 </style>	
 </head>
-<body class="with-3d-shadow with-transitions">
+<body class="with-3d-shadow with-transitions"  onload="get_difference(-1);">
 <div id="main">
 	
 	<h1>Gene Expression</h1>
@@ -63,13 +64,30 @@
 </div>
 <script>$("#test1").hide();</script>
 <div id="end" class="wrapper">
-<p id="detail" align></p>
 <p id="loss" align="center" style="color: #FA4346"></p>
 <table  id="coefficient"  border="1" align="center">
 </table>
 <p align="center"><button onClick="window.location.reload();" class="button buttonShadow">Home</button></p>
 </div>
 <p align="center"><a href="support.html" target="_blank"><button class="button buttonShadow">Support</button></a></p>
+
+<p align="center"><button class="button buttonShadow" onclick="isClickedSet();" id="setting">Settings(off)</button></p>
+
+<div align="center" class="settings" id="settings">
+<p id="preview_diff0" style="color: black"></p>
+<br>
+<div id="model0">
+Gene 1: <input type="text" value="R0SRR1738120XX" id="input_g1" oninput="get_difference(0);">
+Gene 2: <input type="text" value="R0SRR1738120XX" id="input_g2" oninput="get_difference(0);">
+Information: <input type="text" value="SRR1738120" id="input_infor" oninput="get_difference(0);">
+Tissue: <input type="text" value="tissue" id="input_tissue" oninput="get_difference(0);">
+Detail: <input type="text" value="detail" id="input_detail" oninput="get_difference(0);"><br><br>
+<p id="preview_diff" style="color: black"></p>
+<button class="button buttonShadow" onClick="makeSure(-1)">Confirm</button></p>
+</div>
+</div>
+
+<script>$("#settings").hide();</script>
 <script>$("#end").hide();</script>
 <div align="center" onDblClick="displayFace()">
 	<small>Copyright &copy; 2019 Monchi</small>	
