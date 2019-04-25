@@ -1,5 +1,6 @@
 function draw() {
-  document.getElementById('main').innerHTML = '';
+  $("#main").hide();
+  $("#setting").hide();
   $("#end").show();
   $("#test1").show();
 	var keys = getKeys();
