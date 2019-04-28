@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>gene scatter plot support</title>
+<link rel="stylesheet" href="css/gene_scatter_plot_main.css">
+</head>
+<body>
+<div class="center-div">
+    <h1>Test Demo: </h1>
+    <div align="center" class="wrapper">
+        <a href="demo/gene1_demo.json" download="gene1_demo.json"><button class="button buttonShadow">Download gene1_demo.json</button></a><br>
+        <a href="demo/gene2_demo.json" download="gene2_demo.json"><button class="button buttonShadow">Download gene2_demo.json</button></a><br>
+        <a href="demo/information_demo.json" download="information_demo.json"><button class="button buttonShadow">Download inform_demo.json</button></a><br>
+    </div>
+    <h1>Guide: </h1>
+    <div>
+        <h3>1.How to upload the files?</h3>
+        <div class="center-blue-higher-div"> &nbsp; &nbsp;We support the .json and .txt files, you should upload them one by one; If you upload the invalid files or upload the files by a invalid order, we will find them and notice you.</div>
+        <h3>2. How does it work?</h3>
+        <div class="center-blue-higher-div"> &nbsp; &nbsp;According to your gene1 file, we look for the data of gene 2 and information, and if we find them, we will output them. You can use "<b>settings</b>" to add the new search rule by inputting your sample.<br> &nbsp;<a href="t_table.pdf" target="_blank" style="color: red"><i>the t table</i></a><p style="color: #F1161A;" align="center">Tips: Google Chrome is our best supported browser. It also works in Firefox, Opera, Safari and Internet Explorer 10.<br></p></div>
+        <h3>3.Error code</h3>
+        <div class="center-blue-higher-div">
+                '100': 'your browser does not support FileReader objects'<br>
+                '101': 'lack gene1 file'<br>
+                '102': 'lack gene2 file'<br>
+                '103': 'lack information file'<br>
+                '104': 'invalid json format in gene1 file'<br>
+                '105': 'invalid json format in gene2 file'<br>
+                '106': 'invalid json format in information file'<br>
+				'108': 'invalid gene1, gene2, or information uploading order, please upload again by right order'<br></div>
+        <h3>4. How to contact us?</h3>
+        <div class="center-blue-higher-div"> &nbsp; &nbsp;You can send an email to <u>xumengqi&#64;zjnu.edu.cn</u> for help and we will reply to you as soon as possible.<br><i>Last modified:27 April 2019.</i></div>
+        <h3>5. Privacy Notice</h3>
+        <div class="center-blue-higher-div"> &nbsp; &nbsp;Source files are only used for data processing of visualized scatter maps of gene expression. Programs do not store, disseminate or modify any source files.</div>
+    </div>
+</div>
+<p align="center"><a href="gene_scatter_plot_home.html"><button class="button buttonShadow">Home</button></a></p>
+<div align="center">
+    <small>Copyright &copy; 2019 xumengqi</small> 
+    <hr>
+</div>
+</body>
+</html>
