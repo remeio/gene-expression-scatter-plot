@@ -21,13 +21,14 @@ body {
     width: 100%;
 }
 h1 { 
-    font-size: 1.7em;
+    font-size: 1.6em;
     text-align: center;
     color: #54A2F2
 }
 h2 { 
     text-align: center;
-    color: #F36326 
+    color: #F36326;
+	font-size: 1.2em;
 }
 h3 {
     font-size: 1.2em;
