@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>gene scatter plot home</title>
+<link rel="icon" href="src/title_icon.png">
+<link rel="stylesheet" href="css/gene_scatter_plot_main.css">
+<link rel="stylesheet" href="css/nv.d3.css">
+<script src="js/jQuery.js"></script>
+<script src="js/d3.min.js"></script>
+<script src="js/nv.d3.js"></script>
+<script src="js/main.js"></script> 
+</head>
+<body class="with-3d-shadow with-transitions"">
+<div id="id_main_output_scatter" class="chartWrap" style="background-color: white">
+            <svg></svg>
+</div>
+<div id="id_main">
+    <!--main_input-->
+    <div id="id_main_input">
+        <div id="id_main_input_title">
+			<br>
+            <h1>Gene Expression</h1>
+            <h2>Scatter Plot</h2>
+        </div>
+        <div id="id_main_input_upload" class="center-div">
+            <input id="id_main_input_upload_gene1" type="file"/>Upload gene1 file<br>
+            <input id="id_main_input_upload_gene2" type="file"/>Upload gene2 file<br>
+            <input id="id_main_input_upload_information" type="file"/>Upload information file<br>
+        </div>      
+        <div id="id_main_input_preview">
+            <p align="center">Gene1 File</p>
+            <div class="center-blue-div">
+                <p id="id_main_input_preview_gene1"></p>
+            </div>
+            <p align="center">Gene2 File</p>
+            <div class="center-blue-div">
+                <p id="id_main_input_preview_gene2"></p>        
+            </div>
+            <p align="center">Information File</p>
+            <div class="center-blue-div">
+                <p id="id_main_input_preview_information"></p>
+            </div>
+        </div>  
+        <div>
+            <p align="center">
+                <button type="submit" onClick="clickTheSubmit();" class="button buttonShadow">Submit</button>
+            </p>
+        </div>
+    </div>
+    <!--main_output-->
+    <div id="id_main_output">
+        <div class="center-div">
+            <p id="id_main_output_utilization" align="center" style="color: #FA4346"></p>
+            <table  id="id_main_output_table"  border="1" align="center">
+            </table>
+            <p align="center">
+                <button class="button buttonShadow" onClick="window.location.reload();">Home</button>
+            </p>
+        </div>
+    </div>
+    <!--main_support-->
+    <p align="center">
+        <a href="support.html" target="_blank">
+            <button class="button buttonShadow">Support</button>
+        </a>
+    </p>
+    <!--main_settings-->
+    <p align="center">
+        <button id="id_main_settings_settings" class="button buttonShadow" onclick="clickTheSettings();">Settings</button>
+    </p>
+    <div id="id_main_settings" align="center">
+        <!--basic_model-->
+        <div id="id_main_settings_modelbasic">
+            <p id="id_main_settings_modelbasic_current" style="color: black"></p>
+            <br>
+            Gene 1: <input id="id_main_settings_modelbasic_input_gene1" type="text" value="R0SRR1738120XX" oninput="displaySettingsPreviewOfBasicModel();keepPreview();">
+            Gene 2: <input id="id_main_settings_modelbasic_input_gene2" type="text" value="R0SRR1738120XX" oninput="displaySettingsPreviewOfBasicModel();keepPreview();">
+            Information: <input id="id_main_settings_modelbasic_input_information" type="text" value="SRR1738120" oninput="displaySettingsPreviewOfBasicModel();keepPreview();">
+            Attribute1: <input id="id_main_settings_modelbasic_input_tissue" type="text" value="tissue" oninput="keepPreview();">
+            Attribute2: <input id="id_main_settings_modelbasic_input_detail" type="text" value="detail" oninput="keepPreview();"><br><br>
+			<input id="id_main_settings_modelbasic_output_gene1left" type="text" class="red-text-right-input" oninput="keepPreview();">
+            <input id="id_main_settings_modelbasic_output_gene1key" type="text" class="blue-text-center-input" oninput="keepKey('id_main_settings_modelbasic_output_gene1key');">
+            <input id="id_main_settings_modelbasic_output_gene1right" type="text" class="red-text-left-input" oninput="keepPreview();"><br>
+			<input id="id_main_settings_modelbasic_output_gene2left" type="text" class="red-text-right-input" oninput="keepPreview();">
+            <input id="id_main_settings_modelbasic_output_gene2key" type="text" class="blue-text-center-input" oninput="keepKey('id_main_settings_modelbasic_output_gene2key');">
+            <input id="id_main_settings_modelbasic_output_gene2right" type="text" class="red-text-left-input" oninput="keepPreview();"><br>
+			<input id="id_main_settings_modelbasic_output_informationleft" type="text" class="red-text-right-input" oninput="keepPreview();">
+            <input id="id_main_settings_modelbasic_output_informationkey" type="text" class="blue-text-center-input" oninput="keepKey('id_main_settings_modelbasic_output_informationkey');">
+            <input id="id_main_settings_modelbasic_output_informationright" type="text" class="red-text-left-input" oninput="keepPreview();"><br>
+			<p id="id_main_settings_modelbasic_preview" style="color: black"></p>
+            <button class="button buttonShadow" onClick="clickTheAddOfBasicModel()">Add the sample</button></p>
+			<table id="id_main_settings_modelbasic_attr_table" border="1" align="center">
+            </table>
+			<p id="id_main_settings_modelbasic_lastsaved" style="color: black"></p>
+			<br>
+        </div>
+        <!--advanced_model-->
+        
+        <!--blurry_model-->
+        
+    </div>
+    <!--main_end-->
+    <div id="id_main_end" align="center">
+		<a href="https://github.com/xumengqi1/gene-expression-scatter-plot" target="_blank"><img src="src/github_icon.png" alt="github link" width="25" height="25"></img></a><br>
+        <small>Copyright &copy; 2019 xumengqi</small>
+		<hr>
+    </div>
+</div>
+<script>
+    startRun();
+</script>
+</body>
+</html>
+
