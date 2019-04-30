@@ -6,7 +6,6 @@ text {
 svg {
     display: block;
 }
-html, #id_main_output_scatter, svg {
 html {
     margin: 0px;
     padding: 0px;
