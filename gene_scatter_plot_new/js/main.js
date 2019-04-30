@@ -61,11 +61,13 @@ function startRun() {
     keepPreview();
     showMatchs();
     $("#id_main_output_scatter").hide();
+    $("#id_main_output_tooltips").hide();
     $("#id_main_output").hide();
     $("#id_main_settings").hide();
 }
 function clickTheSubmit() {
     $("#id_main_output_scatter").show();
+    $("#id_main_output_tooltips").show();
     $("#id_main_input").hide();
     $("#id_main_output").show();
     $("#id_main_settings_settings").hide();
@@ -225,10 +227,10 @@ function makeJsonIntoArray(jsonGene1, jsonGene2, jsonInformation, isJsonInformat
                     }
                 }
             }
-            var index = indexOfTissue(strTissue, tissues);
+            var index = indexOfTissues(strTissue, tissues);
             if (index == -1) {
                 tissues.push(strTissue);
-                index = indexOfTissue(strTissue, tissues);
+                index = indexOfTissues(strTissue, tissues);
                 datas[index] = new Array();
                 details[index] = new Array();
             }
@@ -342,7 +344,7 @@ function sortByColumn(numForChangingTheOrderByColumn) {
         numForChangingTheOrderByP++;
         break;
     }
-    str = "<tr><th><p onclick='sortByColumn(1);'>" + strTissueSettings + "</p></th><th><p onclick='sortByColumn(2);'>Correlation Coefficient</p></th><th><p onclick='sortByColumn(3);'>Number</p></th><th><p onclick='sortByColumn(4);'>P Value (two-tails)</p></th></tr>" +
+    str = "<tr><th><p onclick='sortByColumn(1);'>" + strTissueSettings + "</p></th><th><p onclick='sortByColumn(2);'>Correlation Coefficient</p></th><th><p onclick='sortByColumn(3);'>Number</p></th><th><p onclick='sortByColumn(4);'>P Value (one-tail)</p></th></tr>" +
         str + lastLineCorrelationCoefficient;
     document.getElementById("id_main_output_table").innerHTML = str;
 }
@@ -411,19 +413,17 @@ function drawScatterPlot() {
       for (var i = 0; i < datas.length; i++) {
         for (var j = 0; j < datas[i].length; j = j + 2) {
           if (datas[i][j].toFixed(5) == tempX && datas[i][j + 1].toFixed(5) == tempY) {
-            var tempDetail = "(" + datas[i][j] + ", " + datas[i][j + 1] + ")<br><br>" + details[i][j / 2];
-            var finalDetail = "<p class='tooltips_left' style='text-align: left;'>";
-            for (var k = 0; k < tempDetail.length; k++) {
-              finalDetail = finalDetail + tempDetail.charAt(k);
-              if (k % 50 == 0 && k != 0) {
-                finalDetail = finalDetail + "<br>";
-              }
-            }
-            return finalDetail + "</p>";
+			var index = indexOfGroups(tissues[i], groups);
+			var preDetail = "<p class='tooltips_left' style='text-align: left; overflow: auto; '>";
+			var tempDetail = strTissueSettings + ": " + tissues[i] + "<br>(" + datas[i][j] + ", " + datas[i][j + 1] + ")<br><br>Correlation Coefficient: " + groups[index][1].toFixed(5) +
+				groups[index][4] + "<br>Number: " + groups[index][2] + "<br>P Value (one-tail): " + groups[index][3].toFixed(5) + "<br><br>" +details[i][j / 2];
+			tempDetail = preDetail + tempDetail + "<br>";
+			document.getElementById("id_main_output_tooltips_detail").innerHTML = tempDetail + "</p>";
+            return "(" + datas[i][j] + ", " + datas[i][j + 1] + ")";
           }
         }
       }
-      return "(0,0)";
+      return "";
     }
 }
 function clickTheSettings() {
@@ -585,7 +585,7 @@ function showMatchs() {
     var strThen = "";
     var strEnd = "";
     var strKey = "<i>_key_</i>";
-    var strTable = "<caption><b>Supportable Samples</b></caption><tr><th>No</th><th>Gene1</th><th>Gene2</th><th>Information</th><th>Attribute1</th><th>Attribute2</th></tr>";
+    var strTable = "<caption><b>Acceptable Samples</b></caption><tr><th>No</th><th>Gene1</th><th>Gene2</th><th>Information</th><th>Attribute1</th><th>Attribute2</th></tr>";
     for (var i = 0; i < attrMatchs.length; i++) {
         str =  "</td><td>" + attrMatchs[i][0].fontcolor("red") + strKey.fontcolor("blue") + attrMatchs[i][1].fontcolor("red") + "</td><td>" +
         attrMatchs[i][2].fontcolor("red") + strKey.fontcolor("blue") + attrMatchs[i][3].fontcolor("red") + "</td><td>" +
@@ -628,6 +628,7 @@ function isExistInDetailMatchs(detail) {
     return false;
 }
 function getCorrelationCoefficientAndSetGroups () {
+	var tail = 1;
     var str = "";
     var correlationCoefficient1 = 0;
     var sumOfSquareOfX1 = 0;
@@ -679,7 +680,7 @@ function getCorrelationCoefficientAndSetGroups () {
             correlationCoefficient = 1;
             sign = " (NaN)";
         }
-		var pValue = correlationCoefficientToPValue(correlationCoefficient, doN, 2);
+		var pValue = correlationCoefficientToPValue(correlationCoefficient, doN, 1);
         groups[i] = new Array(tissues[i], Math.abs(correlationCoefficient), doN, pValue, sign);
     }
     averageX1 /= allN;
@@ -696,7 +697,7 @@ function getCorrelationCoefficientAndSetGroups () {
         correlationCoefficient1 = 0;
         sign = " (NaN)";
     }
-	var pTemp = correlationCoefficientToPValue(correlationCoefficient1, allN, 2);
+	var pTemp = correlationCoefficientToPValue(correlationCoefficient1, allN, 1);
     return "<tr><td><b>total</b></td><td><b>" + Math.abs(correlationCoefficient1.toFixed(5)) + sign + "</b></td><td><b>" + allN + "</b></td><td><b>" + pTemp.toFixed(5) + "<b></td></tr>";
 }
 function getTissues() {
@@ -739,13 +740,20 @@ function isJson(str) {
     }
     console.log('It is not a string!')
 }
-function indexOfTissue(tissue, tissues) {
+function indexOfTissues(tissue, tissues) {
     for (var i = 0; i < tissues.length; i++) {
         if (tissue == tissues[i]) {
             return i;
         }
     }
     return -1;
+}
+function indexOfGroups(tissue, groups) {
+	for (var i = 0; i < groups.length; i++) {
+		if (tissue == groups[i][0]) {
+			return i;
+		}
+	}
 }
 function getTime() {
         var date = new Date();

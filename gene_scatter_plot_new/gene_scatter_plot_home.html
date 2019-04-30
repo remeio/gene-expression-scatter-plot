@@ -13,9 +13,21 @@
 </head>
 <body class="with-3d-shadow with-transitions"">
 <div id="id_main_output_scatter" class="chartWrap" style="background-color: white">
-            <svg></svg>
+    <svg></svg>
 </div>
-<div id="id_main">
+<div id="id_main_output_tooltips">
+	<p align="center">
+        <button class="button buttonShadow" onClick="window.location.reload();">Home</button>
+    </p>
+	<p align="center">
+        <a href="support.html" target="_blank">
+            <button class="button buttonShadow">Support</button>
+        </a>
+    </p>
+	<p id="id_main_output_utilization" align="center" style="color: #FA4346"></p>
+	<p id="id_main_output_tooltips_detail"></p>
+</div>
+<div id="id_main" style="clear: both">
     <!--main_input-->
     <div id="id_main_input">
         <div id="id_main_input_title">
@@ -51,7 +63,6 @@
     <!--main_output-->
     <div id="id_main_output">
         <div class="center-div">
-            <p id="id_main_output_utilization" align="center" style="color: #FA4346"></p>
             <table  id="id_main_output_table"  border="1" align="center">
             </table>
             <p align="center">

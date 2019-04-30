@@ -16,7 +16,12 @@ html {
     margin: 0px;
     padding: 0px;
     height: 100%;
-    width: 100%;
+    width: 75%;
+	float: left;
+}
+#id_main_output_tooltips {
+	float: left;
+	width: 25%;
 }
 body {
 	font-family: sans-serif;
