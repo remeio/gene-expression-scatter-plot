@@ -529,6 +529,15 @@ function addTheDefaultMatchToArray() {
     attrMatchs[len].push("XX");
     attrMatchs[len].push("");
     attrMatchs[len].push("");
+	
+	len++;
+    attrMatchs[len] = new Array();
+    attrMatchs[len].push("R0");
+    attrMatchs[len].push("XXX");
+    attrMatchs[len].push("R0");
+    attrMatchs[len].push("XXX");
+    attrMatchs[len].push("");
+    attrMatchs[len].push("");
     
     tissueMatchs.push("tissue");
     tissueMatchs.push("category");
