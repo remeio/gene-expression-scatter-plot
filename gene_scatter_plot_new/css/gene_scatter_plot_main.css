@@ -7,6 +7,13 @@ svg {
     display: block;
 }
 html, #id_main_output_scatter, svg {
+html {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+}
+#id_main_output_scatter, svg {
     margin: 0px;
     padding: 0px;
     height: 100%;
