@@ -254,12 +254,12 @@ function sortByColumn(numForChangingTheOrderByColumn) {
         case 1:
         if (numForChangingTheOrderByTissue % 2 == 0) {
             for (var i = 0; i < groups.length; i++) {
-                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + groups[i][3].toExponential(3) + "</td></tr>";
+                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + makeNumberToStringAndExponential(groups[i][3]) + "</td></tr>";
             }
         }
         else {
             for (var i = groups.length - 1; i >= 0; i--) {
-                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + groups[i][3].toExponential(3) + "</td></tr>";
+                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + makeNumberToStringAndExponential(groups[i][3]) + "</td></tr>";
             }
         }
         numForChangingTheOrderByTissue++;
@@ -267,12 +267,12 @@ function sortByColumn(numForChangingTheOrderByColumn) {
         case 2:
         if (numForChangingTheOrderByCoefficient % 2 == 0) {
             for (var i = 0; i < groups.length; i++) {
-                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + groups[i][3].toExponential(3) + "</td></tr>";
+                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + makeNumberToStringAndExponential(groups[i][3]) + "</td></tr>";
             }
         }
         else {
             for (var i = groups.length - 1; i >= 0; i--) {
-                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + groups[i][3].toExponential(3) + "</td></tr>";
+                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + makeNumberToStringAndExponential(groups[i][3]) + "</td></tr>";
             }
         }
         numForChangingTheOrderByCoefficient++;
@@ -280,12 +280,12 @@ function sortByColumn(numForChangingTheOrderByColumn) {
         case 3:
         if (numForChangingTheOrderByNumber % 2 == 0) {
             for (var i = 0; i < groups.length; i++) {
-                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + groups[i][3].toExponential(3) + "</td></tr>";
+                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + makeNumberToStringAndExponential(groups[i][3]) + "</td></tr>";
             }
         }
         else {
             for (var i = groups.length - 1; i >= 0; i--) {
-                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + groups[i][3].toExponential(3) + "</td></tr>";
+                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + makeNumberToStringAndExponential(groups[i][3]) + "</td></tr>";
             }
         }
         numForChangingTheOrderByNumber++;
@@ -293,12 +293,12 @@ function sortByColumn(numForChangingTheOrderByColumn) {
         case 4:
         if (numForChangingTheOrderByP % 2 == 0) {
             for (var i = 0; i < groups.length; i++) {
-                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + groups[i][3].toExponential(3) + "</td></tr>";
+                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + makeNumberToStringAndExponential(groups[i][3]) + "</td></tr>";
             }
         }
         else {
             for (var i = groups.length - 1; i >= 0; i--) {
-                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + groups[i][3].toExponential(3) + "</td></tr>";
+                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + makeNumberToStringAndExponential(groups[i][3]) + "</td></tr>";
             }
         }
         numForChangingTheOrderByP++;
@@ -376,7 +376,7 @@ function drawScatterPlot() {
 			var index = indexOfGroups(tissues[i], groups);
 			var preDetail = "<p class='tooltips_left' style='text-align: left; overflow: auto; '>";
 			var tempDetail = strTissueSettings + ": " + tissues[i] + "<br>(" + datas[i][j] + ", " + datas[i][j + 1] + ")<br><br>Correlation Coefficient: " + groups[index][1].toFixed(5) +
-				groups[index][4] + "<br>Number: " + groups[index][2] + "<br>P Value (one-tail): " + groups[index][3].toExponential(3) + "<br><br>" +details[i][j / 2];
+				groups[index][4] + "<br>Number: " + groups[index][2] + "<br>P Value (one-tail): " + makeNumberToStringAndExponential(groups[index][3]) + "<br><br>" +details[i][j / 2];
 			tempDetail = preDetail + tempDetail + "<br>";
 			document.getElementById("id_main_output_tooltips_detail").innerHTML = tempDetail + "</p>";
             return "(" + datas[i][j] + ", " + datas[i][j + 1] + ")";
@@ -658,7 +658,7 @@ function getCorrelationCoefficientAndSetGroups () {
         sign = " (NaN)";
     }
 	var pTemp = correlationCoefficientToPValue(correlationCoefficient1, allN, 1);
-    return "<tr><td><b>total</b></td><td><b>" + Math.abs(correlationCoefficient1.toFixed(5)) + sign + "</b></td><td><b>" + allN + "</b></td><td><b>" + pTemp.toExponential(3) + "<b></td></tr>";
+    return "<tr><td><b>total</b></td><td><b>" + Math.abs(correlationCoefficient1.toFixed(5)) + sign + "</b></td><td><b>" + allN + "</b></td><td><b>" + makeNumberToStringAndExponential(pTemp) + "<b></td></tr>";
 }
 function getTissues() {
     return this.tissues;
@@ -741,4 +741,18 @@ function correlationCoefficientToPValue(r, n, tail) {
 		return 0.5 * tail;
 	}
 	return TtoP(t, degreesOfFreedom) / 2 * tail;
+}
+function makeNumberToStringAndExponential(temp) {
+	var eTemp = temp.toExponential(3);
+	var strTemp = eTemp + "";
+	var indexOfE = 0;
+	var str = "";
+	for (var i = 0; i < strTemp.length; i++) {
+		if(strTemp.charAt(i) == 'e') {
+			indexOfE = i;
+			break;
+		}
+	}
+	str = strTemp.substring(0, indexOfE) + " &times; 10<sup>" + strTemp.substring(indexOfE + 1) + "</sup>";
+	return str;
 }
