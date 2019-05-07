@@ -373,12 +373,12 @@ function drawScatterPlot() {
       for (var i = 0; i < datas.length; i++) {
         for (var j = 0; j < datas[i].length; j = j + 2) {
           if (datas[i][j].toFixed(5) == tempX && datas[i][j + 1].toFixed(5) == tempY) {
-			var index = indexOfGroups(tissues[i], groups);
-			var preDetail = "<p class='tooltips_left' style='text-align: left; overflow: auto; '>";
-			var tempDetail = strTissueSettings + ": " + tissues[i] + "<br>(" + datas[i][j] + ", " + datas[i][j + 1] + ")<br><br>Correlation Coefficient: " + groups[index][1].toFixed(5) +
-				groups[index][4] + "<br>Number: " + groups[index][2] + "<br>P Value (one-tail): " + makeNumberToStringAndExponential(groups[index][3]) + "<br><br>" +details[i][j / 2];
-			tempDetail = preDetail + tempDetail + "<br>";
-			document.getElementById("id_main_output_tooltips_detail").innerHTML = tempDetail + "</p>";
+            var index = indexOfGroups(tissues[i], groups);
+            var preDetail = "<p class='tooltips_left' style='text-align: left; overflow: auto; '>";
+            var tempDetail = strTissueSettings + ": " + tissues[i] + "<br>(" + datas[i][j] + ", " + datas[i][j + 1] + ")<br><br>Correlation Coefficient: " + groups[index][1].toFixed(5) +
+                groups[index][4] + "<br>Number: " + groups[index][2] + "<br>P Value (one-tail): " + makeNumberToStringAndExponential(groups[index][3]) + "<br><br>" +details[i][j / 2];
+            tempDetail = preDetail + tempDetail + "<br>";
+            document.getElementById("id_main_output_tooltips_detail").innerHTML = tempDetail + "</p>";
             return "(" + datas[i][j] + ", " + datas[i][j + 1] + ")";
           }
         }
@@ -489,8 +489,8 @@ function addTheDefaultMatchToArray() {
     attrMatchs[len].push("XX");
     attrMatchs[len].push("");
     attrMatchs[len].push("");
-	
-	len++;
+    
+    len++;
     attrMatchs[len] = new Array();
     attrMatchs[len].push("R0");
     attrMatchs[len].push("XXX");
@@ -588,7 +588,7 @@ function isExistInDetailMatchs(detail) {
     return false;
 }
 function getCorrelationCoefficientAndSetGroups () {
-	var tail = 1;
+    var tail = 1;
     var str = "";
     var correlationCoefficient1 = 0;
     var sumOfSquareOfX1 = 0;
@@ -640,7 +640,7 @@ function getCorrelationCoefficientAndSetGroups () {
             correlationCoefficient = 1;
             sign = " (NaN)";
         }
-		var pValue = correlationCoefficientToPValue(correlationCoefficient, doN, 1);
+        var pValue = correlationCoefficientToPValue(correlationCoefficient, doN, 1);
         groups[i] = new Array(tissues[i], Math.abs(correlationCoefficient), doN, pValue, sign);
     }
     averageX1 /= allN;
@@ -657,7 +657,7 @@ function getCorrelationCoefficientAndSetGroups () {
         correlationCoefficient1 = 0;
         sign = " (NaN)";
     }
-	var pTemp = correlationCoefficientToPValue(correlationCoefficient1, allN, 1);
+    var pTemp = correlationCoefficientToPValue(correlationCoefficient1, allN, 1);
     return "<tr><td><b>total</b></td><td><b>" + Math.abs(correlationCoefficient1.toFixed(5)) + sign + "</b></td><td><b>" + allN + "</b></td><td><b>" + makeNumberToStringAndExponential(pTemp) + "<b></td></tr>";
 }
 function getTissues() {
@@ -709,11 +709,11 @@ function indexOfTissues(tissue, tissues) {
     return -1;
 }
 function indexOfGroups(tissue, groups) {
-	for (var i = 0; i < groups.length; i++) {
-		if (tissue == groups[i][0]) {
-			return i;
-		}
-	}
+    for (var i = 0; i < groups.length; i++) {
+        if (tissue == groups[i][0]) {
+            return i;
+        }
+    }
 }
 function getTime() {
         var date = new Date();
@@ -736,23 +736,23 @@ function formatZero(temp){
 function correlationCoefficientToPValue(r, n, tail) {
     var degreesOfFreedom = n;
     var t = r * Math.pow((degreesOfFreedom - 2) / (1 - r * r), 0.5);
-	t = Math.abs(t);
-	if (degreesOfFreedom <= 2) {
-		return 0.5 * tail;
-	}
-	return TtoP(t, degreesOfFreedom) / 2 * tail;
+    t = Math.abs(t);
+    if (degreesOfFreedom <= 2) {
+        return 0.5 * tail;
+    }
+    return TtoP(t, degreesOfFreedom) / 2 * tail;
 }
 function makeNumberToStringAndExponential(temp) {
-	var eTemp = temp.toExponential(3);
-	var strTemp = eTemp + "";
-	var indexOfE = 0;
-	var str = "";
-	for (var i = 0; i < strTemp.length; i++) {
-		if(strTemp.charAt(i) == 'e') {
-			indexOfE = i;
-			break;
-		}
-	}
-	str = strTemp.substring(0, indexOfE) + "&times;10<sup>" + strTemp.substring(indexOfE + 1) + "</sup>";
-	return str;
+    var eTemp = temp.toExponential(3);
+    var strTemp = eTemp + "";
+    var indexOfE = 0;
+    var str = "";
+    for (var i = 0; i < strTemp.length; i++) {
+        if(strTemp.charAt(i) == 'e') {
+            indexOfE = i;
+            break;
+        }
+    }
+    str = strTemp.substring(0, indexOfE) + "&times;10<sup>" + strTemp.substring(indexOfE + 1) + "</sup>";
+    return str;
 }
