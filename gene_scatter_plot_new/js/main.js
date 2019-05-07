@@ -14,46 +14,6 @@ var numForChangingTheOrderByNumber = 0;
 var numForChangingTheOrderByP = 0;
 var executeAdjustOfBasicModel = "";
 var strTissueSettings = "Tissue";
-var oneTailPValueArray = [1, 0.50, 0.25, 0.20, 0.15, 0.10, 0.05, 0.025, 0.01, 0.005, 0.001, 0.0005];
-var tDistributionArray = [
-    [1, 0.000, 1.000, 1.376, 1.963, 3.078, 6.314, 12.71, 31.82, 63.66, 318.31, 636.62],
-    [2, 0.000, 0.816, 1.061, 1.386, 1.886, 2.920, 4.303, 6.965, 9.925, 22.327, 31.599],
-    [3, 0.000, 0.765, 0.978, 1.250, 1.638, 2.353, 3.182, 4.541, 5.841, 10.215, 12.924],
-    [4, 0.000, 0.741, 0.941, 1.190, 1.533, 2.132, 2.776, 3.747, 4.604, 7.173, 8.610],
-    [5, 0.000, 0.727, 0.920, 1.156, 1.476, 2.015, 2.571, 3.365, 4.032, 5.893, 6.869],
-    [6, 0.000, 0.718, 0.906, 1.134, 1.440, 1.943, 2.447, 3.143, 3.707, 5.208, 5.959],
-    [7, 0.000, 0.711, 0.896, 1.119, 1.415, 1.895, 2.365, 2.998, 3.499, 4.785, 5.408],
-    [8, 0.000, 0.706, 0.889, 1.108, 1.397, 1.860, 2.306, 2.896, 3.355, 4.501, 5.041],
-    [9, 0.000, 0.703, 0.883, 1.100, 1.383, 1.833, 2.262, 2.821, 3.250, 4.297, 4.781],
-    [10, 0.000, 0.700, 0.879, 1.093, 1.372, 1.812, 2.228, 2.764, 3.169, 4.144, 4.587],
-    [11, 0.000, 0.697, 0.876, 1.088, 1.363, 1.796, 2.201, 2.718, 3.106, 4.025, 4.437],
-    [12, 0.000, 0.695, 0.873, 1.083, 1.356, 1.782, 2.179, 2.681, 3.055, 3.930, 4.318],
-    [13, 0.000, 0.694, 0.870, 1.079, 1.350, 1.771, 2.160, 2.650, 3.012, 3.852, 4.221],
-    [14, 0.000, 0.692, 0.868, 1.076, 1.345, 1.761, 2.145, 2.624, 2.977, 3.787, 4.140],
-    [15, 0.000, 0.691, 0.866, 1.074, 1.341, 1.753, 2.131, 2.602, 2.947, 3.733, 4.073],
-    [16, 0.000, 0.690, 0.865, 1.071, 1.337, 1.746, 2.120, 2.583, 2.921, 3.686, 4.015],
-    [17, 0.000, 0.689, 0.863, 1.069, 1.333, 1.740, 2.110, 2.567, 2.898, 3.646, 3.965],
-    [18, 0.000, 0.688, 0.862, 1.067, 1.330, 1.734, 2.101, 2.552, 2.878, 3.610, 3.922],
-    [19, 0.000, 0.688, 0.861, 1.066, 1.328, 1.729, 2.093, 2.539, 2.861, 3.579, 3.883],
-    [20, 0.000, 0.687, 0.860, 1.064, 1.325, 1.725, 2.086, 2.528, 2.845, 3.552, 3.850], 
-    [21, 0.000, 0.686, 0.859, 1.063, 1.323, 1.721, 2.080, 2.518, 2.831, 3.527, 3.819],
-    [22, 0.000, 0.686, 0.858, 1.061, 1.321, 1.717, 2.074, 2.508, 2.819, 3.505, 3.792],
-    [23, 0.000, 0.685, 0.858, 1.060, 1.319, 1.714, 2.069, 2.500, 2.807, 3.485, 3.768],
-    [24, 0.000, 0.685, 0.857, 1.059, 1.318, 1.711, 2.064, 2.492, 2.797, 3.467, 3.745],
-    [25, 0.000, 0.684, 0.856, 1.058, 1.316, 1.708, 2.060, 2.485, 2.787, 3.450, 3.725],
-    [26, 0.000, 0.684, 0.856, 1.058, 1.315, 1.706, 2.056, 2.479, 2.779, 3.435, 3.707],
-    [27, 0.000, 0.684, 0.855, 1.057, 1.314, 1.703, 2.052, 2.473, 2.771, 3.421, 3.690],
-    [28, 0.000, 0.683, 0.855, 1.056, 1.313, 1.701, 2.048, 2.467, 2.763, 3.408, 3.674],
-    [29, 0.000, 0.683, 0.854, 1.055, 1.311, 1.699, 2.045, 2.462, 2.756, 3.396, 3.659],
-    [30, 0.000, 0.683, 0.854, 1.055, 1.310, 1.697, 2.042, 2.457, 2.750, 3.385, 3.646],
-    [40, 0.000, 0.681, 0.851, 1.050, 1.303, 1.684, 2.021, 2.423, 2.704, 3.307, 3.551],
-    [60, 0.000, 0.679, 0.848, 1.045, 1.296, 1.671, 2.000, 2.390, 2.660, 3.232, 3.460],
-    [80, 0.000, 0.678, 0.846, 1.043, 1.292, 1.664, 1.990, 2.374, 2.639, 3.195, 3.416],
-    [100, 0.000, 0.677, 0.845, 1.042, 1.290, 1.660, 1.984, 2.364, 2.626, 3.174, 3.390],
-    [1000, 0.000, 0.675, 0.842, 1.037, 1.282, 1.646, 1.962, 2.330, 2.581, 3.098, 3.300],
-    [1001, 0.000, 0.674, 0.842, 1.036, 1.282, 1.645, 1.960, 2.326, 2.576, 3.090, 3.291]
-];
-
 function startRun() {
     makeFileToString();
     displaySettingsPreviewOfBasicModel();
@@ -294,12 +254,12 @@ function sortByColumn(numForChangingTheOrderByColumn) {
         case 1:
         if (numForChangingTheOrderByTissue % 2 == 0) {
             for (var i = 0; i < groups.length; i++) {
-                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + groups[i][3].toFixed(5) + "</td></tr>";
+                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + groups[i][3].toExponential(3) + "</td></tr>";
             }
         }
         else {
             for (var i = groups.length - 1; i >= 0; i--) {
-                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + groups[i][3].toFixed(5) + "</td></tr>";
+                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + groups[i][3].toExponential(3) + "</td></tr>";
             }
         }
         numForChangingTheOrderByTissue++;
@@ -307,12 +267,12 @@ function sortByColumn(numForChangingTheOrderByColumn) {
         case 2:
         if (numForChangingTheOrderByCoefficient % 2 == 0) {
             for (var i = 0; i < groups.length; i++) {
-                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + groups[i][3].toFixed(5) + "</td></tr>";
+                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + groups[i][3].toExponential(3) + "</td></tr>";
             }
         }
         else {
             for (var i = groups.length - 1; i >= 0; i--) {
-                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + groups[i][3].toFixed(5) + "</td></tr>";
+                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + groups[i][3].toExponential(3) + "</td></tr>";
             }
         }
         numForChangingTheOrderByCoefficient++;
@@ -320,12 +280,12 @@ function sortByColumn(numForChangingTheOrderByColumn) {
         case 3:
         if (numForChangingTheOrderByNumber % 2 == 0) {
             for (var i = 0; i < groups.length; i++) {
-                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + groups[i][3].toFixed(5) + "</td></tr>";
+                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + groups[i][3].toExponential(3) + "</td></tr>";
             }
         }
         else {
             for (var i = groups.length - 1; i >= 0; i--) {
-                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + groups[i][3].toFixed(5) + "</td></tr>";
+                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + groups[i][3].toExponential(3) + "</td></tr>";
             }
         }
         numForChangingTheOrderByNumber++;
@@ -333,12 +293,12 @@ function sortByColumn(numForChangingTheOrderByColumn) {
         case 4:
         if (numForChangingTheOrderByP % 2 == 0) {
             for (var i = 0; i < groups.length; i++) {
-                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + groups[i][3].toFixed(5) + "</td></tr>";
+                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + groups[i][3].toExponential(3) + "</td></tr>";
             }
         }
         else {
             for (var i = groups.length - 1; i >= 0; i--) {
-                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + groups[i][3].toFixed(5) + "</td></tr>";
+                str = str + "<tr><td>" + groups[i][0] + "</td><td>" + groups[i][1].toFixed(5) + groups[i][4] + "</td><td>" + groups[i][2] + "</td><td>" + groups[i][3].toExponential(3) + "</td></tr>";
             }
         }
         numForChangingTheOrderByP++;
@@ -416,7 +376,7 @@ function drawScatterPlot() {
 			var index = indexOfGroups(tissues[i], groups);
 			var preDetail = "<p class='tooltips_left' style='text-align: left; overflow: auto; '>";
 			var tempDetail = strTissueSettings + ": " + tissues[i] + "<br>(" + datas[i][j] + ", " + datas[i][j + 1] + ")<br><br>Correlation Coefficient: " + groups[index][1].toFixed(5) +
-				groups[index][4] + "<br>Number: " + groups[index][2] + "<br>P Value (one-tail): " + groups[index][3].toFixed(5) + "<br><br>" +details[i][j / 2];
+				groups[index][4] + "<br>Number: " + groups[index][2] + "<br>P Value (one-tail): " + groups[index][3].toExponential(3) + "<br><br>" +details[i][j / 2];
 			tempDetail = preDetail + tempDetail + "<br>";
 			document.getElementById("id_main_output_tooltips_detail").innerHTML = tempDetail + "</p>";
             return "(" + datas[i][j] + ", " + datas[i][j + 1] + ")";
@@ -698,7 +658,7 @@ function getCorrelationCoefficientAndSetGroups () {
         sign = " (NaN)";
     }
 	var pTemp = correlationCoefficientToPValue(correlationCoefficient1, allN, 1);
-    return "<tr><td><b>total</b></td><td><b>" + Math.abs(correlationCoefficient1.toFixed(5)) + sign + "</b></td><td><b>" + allN + "</b></td><td><b>" + pTemp.toFixed(5) + "<b></td></tr>";
+    return "<tr><td><b>total</b></td><td><b>" + Math.abs(correlationCoefficient1.toFixed(5)) + sign + "</b></td><td><b>" + allN + "</b></td><td><b>" + pTemp.toExponential(3) + "<b></td></tr>";
 }
 function getTissues() {
     return this.tissues;
@@ -775,54 +735,10 @@ function formatZero(temp){
 }
 function correlationCoefficientToPValue(r, n, tail) {
     var degreesOfFreedom = n;
-	if (n <= 2) {
+    var t = r * Math.pow((degreesOfFreedom - 2) / (1 - r * r), 0.5);
+	t = Math.abs(t);
+	if (degreesOfFreedom <= 2) {
 		return 0.5 * tail;
 	}
-    var t = r * Math.pow((degreesOfFreedom - 2) / (1 - r * r), 0.5);
-    t = Math.abs(t);
-    var positionStart = 0;
-    var positionEnd = 0;
-    if (degreesOfFreedom <= 1000) {
-        for (var i = 0; i < tDistributionArray.length - 2; i++) {
-            if (degreesOfFreedom == tDistributionArray[i][0]) {
-                positionStart = i;
-                positionEnd = i;
-                break;
-            }
-            if (degreesOfFreedom == tDistributionArray[i + 1][0]) {
-                positionStart = i + 1;
-                positionEnd = i + 1;
-                break;
-            }
-        
-            if (degreesOfFreedom > tDistributionArray[i][0] && degreesOfFreedom < tDistributionArray[i + 1][0]) {
-                positionStart = i;
-                positionEnd = i + 1;
-                break;
-            }
-        }
-        return (findPByPosition(positionStart, t, tail) + findPByPosition(positionEnd, t, tail)) / 2;
-    }
-    else {
-        return findPByPosition(tDistributionArray.length - 1, t, tail);
-    }
-}
-function findPByPosition(position, t, tail) {
-    var p = 0;
-    if (t > tDistributionArray[position][11]) {
-        p = 0;
-    }
-    else {
-        for (var i = 1; i < tDistributionArray.length - 1; i++) {
-            if (t == tDistributionArray[position][i]) {
-                p = oneTailPValueArray[i];
-                break;
-            }
-            if (t > tDistributionArray[position][i] && t < tDistributionArray[position][i + 1]) {
-                p =  (oneTailPValueArray[i] + oneTailPValueArray[i + 1]) / 2;
-                break;
-            }
-        }
-    }
-    return p * tail;
+	return TtoP(t, degreesOfFreedom) / 2 * tail;
 }
