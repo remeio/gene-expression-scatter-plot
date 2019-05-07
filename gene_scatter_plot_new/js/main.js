@@ -304,7 +304,7 @@ function sortByColumn(numForChangingTheOrderByColumn) {
         numForChangingTheOrderByP++;
         break;
     }
-    str = "<tr><th><p onclick='sortByColumn(1);'>" + strTissueSettings + "</p></th><th><p onclick='sortByColumn(2);'>Correlation Coefficient</p></th><th><p onclick='sortByColumn(3);'>Number</p></th><th><p onclick='sortByColumn(4);'>P Value (one-tail)</p></th></tr>" +
+    str = "<tr><th><p onclick='sortByColumn(1);'>" + strTissueSettings + "</p></th><th><p onclick='sortByColumn(2);'>Correlation Coefficient</p></th><th><p onclick='sortByColumn(3);'>Number</p></th><th style='width: 200px;'><p onclick='sortByColumn(4);'>P Value (one-tail)</p></th></tr>" +
         str + lastLineCorrelationCoefficient;
     document.getElementById("id_main_output_table").innerHTML = str;
 }
@@ -753,6 +753,6 @@ function makeNumberToStringAndExponential(temp) {
 			break;
 		}
 	}
-	str = strTemp.substring(0, indexOfE) + " &times; 10<sup>" + strTemp.substring(indexOfE + 1) + "</sup>";
+	str = strTemp.substring(0, indexOfE) + "&times;10<sup>" + strTemp.substring(indexOfE + 1) + "</sup>";
 	return str;
 }
