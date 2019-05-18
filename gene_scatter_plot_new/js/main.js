@@ -650,7 +650,7 @@ function getCorrelationCoefficientAndSetGroups () {
         sign = " (NaN)";
     }
     var pTemp = correlationCoefficientToPValue(correlationCoefficient1, allN, 1);
-    return "<tr><td><b>total</b></td><td><b>" + Math.abs(correlationCoefficient1.toFixed(5)) + sign + "</b></td><td><b>" + allN + "</b></td><td><b>" + makeNumberToStringAndExponential(pTemp) + "<b></td></tr>";
+    return "<tr><td><b>total</b></td><td><b>" + correlationCoefficient1.toFixed(5) + sign + "</b></td><td><b>" + allN + "</b></td><td><b>" + makeNumberToStringAndExponential(pTemp) + "<b></td></tr>";
 }
 function getTissues() {
     return this.tissues;
