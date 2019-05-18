@@ -637,7 +637,7 @@ function getCorrelationCoefficientAndSetGroups () {
             sign = " (-)";
         }
         if (isNaN(correlationCoefficient)) {
-            correlationCoefficient = 1;
+            correlationCoefficient = 0;
             sign = " (NaN)";
         }
         var pValue = correlationCoefficientToPValue(correlationCoefficient, doN, 1);
