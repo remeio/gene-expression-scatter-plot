@@ -87,16 +87,8 @@ function makeStringIntoJson() {
                 errorCode(106);
                 var jsonInformation = null;
             }
-            var testOrder1 = false;
-            for (attr in jsonGene1) {
-                testOrder1 = isNaN(jsonGene1[attr]);
-                break;
-            }
-            var testOrder2 = false;
-            for (attr in jsonGene2) {
-                testOrder2 = isNaN(jsonGene2[attr]);
-                break;
-            }
+            var testOrder1 = isGene1OrGene2Json(strGene1);
+            var testOrder2 = isGene1OrGene2Json(strGene2);
             if (testOrder1 || testOrder2) {
                 errorCode(108);
             }
@@ -755,4 +747,19 @@ function makeNumberToStringAndExponential(temp) {
     }
     str = strTemp.substring(0, indexOfE) + "&times;10<sup>" + strTemp.substring(indexOfE + 1) + "</sup>";
     return str;
+}
+function isGene1OrGene2Json(str) {
+	var n = 0;
+	for (var i = 0; i < str.length; i++) {
+		if (str.charAt(i) == '{') {
+			n++;
+		}
+		if (n > 2) {
+			break;
+		}
+	}
+	if (n == 1) {
+		return true;
+	}
+	return false;
 }
