@@ -87,8 +87,8 @@ function makeStringIntoJson() {
                 errorCode(106);
                 var jsonInformation = null;
             }
-            var testOrder1 = isGene1OrGene2Json(strGene1);
-            var testOrder2 = isGene1OrGene2Json(strGene2);
+            var testOrder1 = !isGene1OrGene2Json(strGene1);
+            var testOrder2 = !isGene1OrGene2Json(strGene2);
             if (testOrder1 || testOrder2) {
                 errorCode(108);
             }
