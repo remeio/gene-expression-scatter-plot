@@ -749,17 +749,17 @@ function makeNumberToStringAndExponential(temp) {
     return str;
 }
 function isGene1OrGene2Json(str) {
-	var n = 0;
-	for (var i = 0; i < str.length; i++) {
-		if (str.charAt(i) == '{') {
-			n++;
-		}
-		if (n > 2) {
-			break;
-		}
-	}
-	if (n == 1) {
-		return true;
-	}
-	return false;
+    var n = 0;
+    for (var i = 0; i < str.length; i++) {
+        if (str.charAt(i) == '{') {
+            n++;
+        }
+        if (n > 2) {
+            break;
+        }
+    }
+    if (n == 1) {
+        return true;
+    }
+    return false;
 }
