@@ -1,4 +1,4 @@
-/*Quote: https://www.easycalculation.com/statistics/p-value-pearson-coefficient.php*/
+/*Reference: https://www.easycalculation.com/statistics/p-value-pearson-coefficient.php*/
 function TtoP(t, df) 
 {
   with (Math) 
