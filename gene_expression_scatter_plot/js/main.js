@@ -370,7 +370,7 @@ function drawScatterPlot() {
             var index = indexOfGroups(tissues[i], groups);
             var preDetail = "<p class='tooltips_left' style='text-align: left; overflow: auto; '>";
             var tempDetail = strTissueSettings + ": " + tissues[i] + "<br>(" + datas[i][j] + ", " + datas[i][j + 1] + ")<br><br>Correlation Coefficient: " + groups[index][1].toFixed(5) +
-                groups[index][4] + "<br>Number: " + groups[index][2] + "<br>P Value (one-tail): " + makeNumberToStringAndExponential(groups[index][3]) + "<br><br>" +details[i][j / 2];
+                groups[index][4] + "<br>Number of the tissue: " + groups[index][2] + "<br>P Value (one-tail): " + makeNumberToStringAndExponential(groups[index][3]) + "<br><br>" +details[i][j / 2];
             tempDetail = preDetail + tempDetail + "<br>";
             document.getElementById("id_main_output_tooltips_detail").innerHTML = tempDetail + "</p>";
             return "(" + datas[i][j] + ", " + datas[i][j + 1] + ")";
