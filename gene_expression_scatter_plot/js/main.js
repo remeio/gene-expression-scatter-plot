@@ -201,9 +201,9 @@ function makeJsonIntoArray(jsonGene1, jsonGene2, jsonInformation, isJsonInformat
     }
     setAndDisplayUtilization(numberOfExecuted, numberOfExecutedInfor, numberOfGene1, numberOfGene2, numberOfInformation, isJsonInformation);
     lastLineCorrelationCoefficient = getCorrelationCoefficientAndSetGroups();
-	if (numberOfExecuted != 0) {
-	    sortByColumn(2);
-	}
+    if (numberOfExecuted != 0) {
+        sortByColumn(2);
+    }
 }
 function setAndDisplayUtilization (numberOfExecuted, numberOfExecutedInfor, numberOfGene1, numberOfGene2, numberOfInformation, isJsonInformation) {
     document.getElementById("id_main_output_utilization").innerHTML =
