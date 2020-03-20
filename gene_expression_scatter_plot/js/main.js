@@ -136,13 +136,6 @@ function makeStringIntoJson() {
         }
     }
 }
-/**
- * 将g1，g2和info合法格式的Json转换为数组
- * @param {Object} jsonGene1 gene1的Json
- * @param {Object} jsonGene2 gene2的Json
- * @param {Object} jsonInformation information的Json
- * @param {Object} isJsonInformation informationJson文件是否上传
- */
 function makeJsonIntoArray(jsonGene1, jsonGene2, jsonInformation, isJsonInformation) {
     var numberOfExecuted = 0;
     var numberOfExecutedInfor = 0;
