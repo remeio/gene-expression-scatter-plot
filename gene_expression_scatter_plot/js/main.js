@@ -1,3 +1,10 @@
+/**
+ *  id_main_output_scatter id_main_output_tooltips
+ *          id_main_input
+ *          id_main_output
+ *          id_main_settings
+ *          id_main_end
+ */
 var tissues = [];
 var datas = new Array();
 datas[0] = new Array();
