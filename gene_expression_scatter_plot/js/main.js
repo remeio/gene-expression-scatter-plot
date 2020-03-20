@@ -81,6 +81,9 @@ function makeFileToString() {
         errorCode(100);
     }
 }
+/**
+ * 将id_main_input_preview中的内容转换为Json
+ */
 function makeStringIntoJson() {
     var strGene1 = document.getElementById("id_main_input_preview_gene1").innerHTML;
     var strGene2 = document.getElementById("id_main_input_preview_gene2").innerHTML;
@@ -105,6 +108,7 @@ function makeStringIntoJson() {
                 errorCode(108);
             }
             else {
+				//将Json转换为数组
                 makeJsonIntoArray(jsonGene1, jsonGene2, jsonInformation, isJsonInformation);
             }
         }
