@@ -43,13 +43,18 @@ function clickTheSubmit() {
     makeStringIntoJson();
     drawScatterPlot();
 }
+/**
+ * 将上传的gene1，gene2，以及information文件转换为字符串，并将转换的结果写到id_main_input_preview中去
+ */
 function makeFileToString() {
     var reader;
     if (FileReader) {
         reader = new FileReader();
+		//获取到input对象
         var objFile1 = document.getElementById("id_main_input_upload_gene1");
         var objFile2 = document.getElementById("id_main_input_upload_gene2");
         var objFile3 = document.getElementById("id_main_input_upload_information");
+		//对input对象进行监听，如果文件内容改变则执行.onChange()
         objFile1.onchange = function () {
             var file = objFile1.files[0];
             reader.readAsText(file, 'utf-8');
@@ -68,7 +73,7 @@ function makeFileToString() {
             var file = objFile3.files[0];
             reader.readAsText(file, 'utf-8');
             reader.onload = function () {
-                    document.getElementById('id_main_input_preview_information').innerHTML = reader.result;
+                document.getElementById('id_main_input_preview_information').innerHTML = reader.result;
             }
         }
     }
